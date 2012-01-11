@@ -1,0 +1,17 @@
+.FolderView {
+  width: 120px;
+  height: 120px;
+  margin: 10px 10px 0px 0px;
+  background-color: yellow;
+}
+
+.FolderView [name=outer] {
+  margin: 0;
+  padding: 0;
+}
+
+.FolderView [name=inner] {
+  padding: 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

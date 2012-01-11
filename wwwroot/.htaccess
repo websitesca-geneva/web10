@@ -1,0 +1,34 @@
+#
+# .htaccess
+# All the rewrite rules required to make the system work
+#
+
+php_value include_path ".:/Applications/MAMP/bin/php/php5.3.6/lib/php:/Applications/MAMP/web10/wwwroot:/Applications/MAMP/web10/lib"
+php_value upload_max_filesize 128M
+
+php_value xdebug.remote_autostart Off
+php_value xdebug.remote_enable On
+
+RewriteEngine On
+
+RewriteRule ^sadmin/$ /sadmin/index.php [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^sadmin/(.*)/(.*)$ /sadmin/index.php?c=$1&m=$2 [L,QSA]
+
+RewriteRule ^login$ /login.php [L]
+
+#RewriteRule ^api/domain$ /dispatch.php?dt=domain [L]
+RewriteRule ^api/domain/(.*)/(.*)$ /dispatch.php?dt=domain&t=$1&id=$2 [L]
+RewriteRule ^api/domain/(.*)$ /dispatch.php?dt=domain&t=$1 [L]
+
+#RewriteRule ^api/blockview$ /_dispatch.php?dt=block [L]
+RewriteRule ^api/blockview/(.*)/(.*)$ /dispatch.php?dt=blockview&t=$1&id=$2 [L]
+RewriteRule ^api/blockview/(.*)$ /dispatch.php?dt=blockview&t=$1 [L]
+
+#RewriteRule ^api/block$ /_dispatch.php?dt=blockview [L]
+RewriteRule ^api/block/(.*)/(.*)$ /dispatch.php?dt=block&t=$1&id=$2 [L]
+RewriteRule ^api/block/(.*)$ /dispatch.php?dt=block&t=$1 [L]
+
+#otherwise, its a page request
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ /dispatch.php?dt=page&u=$1 [L]

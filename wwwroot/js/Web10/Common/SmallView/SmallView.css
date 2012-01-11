@@ -1,0 +1,28 @@
+div.SmallView div.arrowUp {
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 15px solid red;
+  position: absolute;
+}
+
+div.SmallView {
+  position: absolute;
+  background-color: red;
+  padding: 10px;
+}
+
+div.SmallView a.close {
+  background-color: #555;
+  color: lightblue;
+  top: 0px;
+  right: 0px;
+  position: absolute;
+  float: right;
+  padding: 10px;
+}
+
+div.SmallView.hide {
+  display: none;
+}

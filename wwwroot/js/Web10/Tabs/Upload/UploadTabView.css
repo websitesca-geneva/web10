@@ -1,0 +1,32 @@
+.UploadTabView .dropzone {
+  background-color: lightgreen;
+  padding: 50px;
+  text-align: center;
+}
+
+.UploadTabView .dropzone.hovering {
+  background-color: orange;
+}
+
+.UploadTabView ol {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+.UploadTabView ol li {
+  margin: 10px 0 0 0;
+}
+
+.UploadTabView .uploadingItem {
+  background-color: yellow;
+  padding: 10px;
+}
+
+.UploadTabView .uploadingItem.complete {
+  background-color: lightgreen;
+}
+
+.UploadTabView .uploadingItem.error {
+  background-color: red;
+}

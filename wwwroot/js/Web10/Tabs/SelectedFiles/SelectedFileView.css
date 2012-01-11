@@ -1,0 +1,11 @@
+.SelectedFilesTabView .SelectedFileView a.remove {
+  position: absolute;
+  margin: 4px;
+  display: none;
+}
+.SelectedFilesTabView .SelectedFileView a.remove.show {
+  display: block;
+}
+.SelectedFilesTabView .SelectedFileView a.remove:hover {
+  background-color: transparent;
+}

@@ -1,0 +1,24 @@
+.PopdownView {
+  display: inline;
+}
+
+.PopdownView a[name=button] {
+  padding: 5px;
+  border-radius: 3px;
+}
+
+.PopdownView a[name=button].active {
+  background-color: yellow;
+}
+
+.PopdownView div[name=inner] {
+  display: none;
+  position: absolute;
+  background-color: yellow;
+  padding: 10px;
+  border-radius: 3px;
+}
+
+.PopdownView div[name=inner].active {
+  display: block;
+}

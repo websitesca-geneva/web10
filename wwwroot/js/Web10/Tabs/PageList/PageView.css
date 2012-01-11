@@ -1,0 +1,19 @@
+.tab.PageListTabView li .PageView {
+  background-color: #888;
+}
+
+.tab.PageListTabView li .PageView a.editButton {
+  display: none;
+}
+
+.tab.PageListTabView li .PageView div.edit {
+  display: none;
+}
+
+.tab.PageListTabView li .PageView.show a.editButton {
+  display: inline;
+}
+
+.tab.PageListTabView li .PageView div.edit.show {
+  display: block;
+}

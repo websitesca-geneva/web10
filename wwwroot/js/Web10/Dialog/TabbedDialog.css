@@ -1,0 +1,80 @@
+.TabbedDialog {
+  width: 100%;
+  top: 70px;
+  position: absolute;
+  font-family: arial;
+  z-index: 20;
+}
+
+.TabbedDialog.hidden {
+  display: none;
+}
+
+.TabbedDialog a {
+  color: navy;
+}
+
+.TabbedDialog a:hover {
+  background-color: orange;
+  color: navy;
+}
+
+.TabbedDialog .dialogTitle {
+  width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #333;
+  padding: 10px;
+  color: white;
+}
+
+.TabbedDialog .dialogTitle a {
+  color: lightblue;
+}
+
+.TabbedDialog .dialogBody {
+  width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #ddd;
+  padding: 10px;
+}
+
+.TabbedDialog .tabs .tabsBody {
+  clear: both;
+  padding-top: 10px;
+}
+
+.TabbedDialog .tabs .tab {
+  display: none;
+}
+
+.TabbedDialog .tabs .tab.selected {
+  display: block;
+}
+
+.TabbedDialog .tabs ul {
+  padding: 0;
+  margin: 0;
+}
+
+.TabbedDialog .tabs .tabsMenu.hidden {
+  display: none;
+}
+
+.TabbedDialog .tabs .tabsMenu li {
+  list-style-type: none;
+  display: block;
+  float: left;
+  margin-right: 10px;
+  padding: 5px;
+  background-color: #aaa;
+}
+
+.TabbedDialog .tabs .tabsMenu li.selected {
+  background-color: red;
+}
+
+.TabbedDialog .tabsFooter {
+  margin-top: 10px;
+}

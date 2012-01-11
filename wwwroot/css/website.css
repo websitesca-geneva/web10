@@ -1,0 +1,31 @@
+/* UPLOADER DROPZONE */
+div.dropzone {
+  background-color: #CCFFCC;
+  border: 1px dotted #669966;
+  padding: 30px;
+  margin-top: 10px;
+}
+
+div.dropzone.enterBrowser {
+  background-color: #99CC66;
+}
+
+div.dropzone.enterDropzone {
+  background-color: #669933;
+}
+
+div.dropzone div.upfile {
+  padding: 10px;
+  background-color: #333300;
+  color: white;
+  margin-bottom: 2px;
+}
+
+div.dropzone div.status div.upfile.finished.ok {
+  background-color: #336600;
+  color: white;
+}
+
+div.dropzone div.status div.upfile.finished.error {
+  background-color: #FF6666;
+}

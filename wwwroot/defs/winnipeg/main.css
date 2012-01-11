@@ -1,0 +1,46 @@
+
+#main-wrapper #content-menu #content-menu-inner {
+  padding: 10px;
+}
+
+#main-wrapper #content-text {
+  width: 300px;
+  height: 450px;
+  float: left;
+  background-color: #CCCC99;
+  overflow: hidden;
+}
+
+#main-wrapper #content-text #content-text-inner {
+  padding: 10px;
+}
+
+#main-wrapper #content-image {
+  width: 450px;
+  height: 450px;
+  float: left;
+  background-color: #CCCC99;
+  overflow: hidden;
+}
+
+#content-menu ul {
+  padding: 0;
+  margin: 0;
+}
+
+#content-menu li {
+  display: block;
+  margin: 0;
+  padding: 0;
+  padding-right: 10px;
+}
+
+#content-menu li a {
+  color: white;
+  font: 20pt Arial;
+  text-decoration: none;
+}
+
+#content-menu li a:hover {
+  color: orange;
+}

@@ -1,0 +1,29 @@
+.SelectedFilesTabView ol.fileList {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.SelectedFilesTabView ol.fileList li {
+  float: left;
+  height: 100px;
+  width: 100px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  background-color: #CCC;
+  padding: 5px;
+}
+
+.SelectedFilesTabView .SelectedFileView {
+  
+}
+
+.SelectedFilesTabView ol.fileList:after { clear:both; content:'.'; display:block; height:0; line-height:0; font-size:0; visibility:hidden; padding:0; margin:0; }
+
+.SelectedFilesTabView .SelectedFileView:hover {
+  cursor: move;
+}
+
+.SelectedFilesTabView .clear {
+  clear: both;
+}

@@ -1,0 +1,33 @@
+body,html,form {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #666633;
+  font: 16pt arial;
+}
+
+#main-wrapper #content-text h1 {
+  font: 36pt Arial;
+  padding: 0;
+  margin: 0;
+}
+
+#main-wrapper {
+  width: 900px;
+  height: 450px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -450px;
+  margin-top: -225px;
+}
+
+#main-wrapper #content-menu {
+  width: 150px;
+  height: 450px;
+  float: left;
+  background-color: #333333;
+  overflow: hidden;
+}

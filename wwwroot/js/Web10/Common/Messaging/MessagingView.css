@@ -1,0 +1,19 @@
+.MessagingView {
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
+  color: #444;
+  padding: 10px;
+  display: none;
+  max-width: 200px;
+  z-index: 10;
+  font: 12pt arial;
+}
+
+.MessagingView.success {
+  background-color: lightgreen;
+}
+
+.MessagingView.error {
+  background-color: pink;
+}
