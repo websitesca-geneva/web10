@@ -1,7 +1,6 @@
 # About WEB10
 
-Web10 is a website management system built for many, smaller websites.  It is meant for website makers, developers, website companies or anyone else looking to setup multiple websites.  
-The system allows site administrators as well as clients edit websites.
+Web10 is a website management system built for many, smaller websites.  It is meant for website makers, developers, website companies or anyone else looking to setup multiple websites.  The system allows site administrators as well as clients edit websites.
 
 # Installation - Requirements
 * Install PHP, Install MySQL (can use a LAMP stack like XAMPP for Windows for MAMP for Mac)

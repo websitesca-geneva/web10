@@ -29,27 +29,26 @@ class EditingAssets extends AssetManager
 
   public function setupCore()
   {
-    $this->addAsset(new JsAsset('/js/jquery.js'));
-    $this->addAsset(new JsAsset('/js/Namespace.js'));
-    $this->addAsset(new JsAsset('/js/mustache.js'));
-    $this->addAsset(new JsAsset('/js/Underscore.js'));
-    $this->addAsset(new JsAsset('/js/Backbone.js'));
-    $this->addAsset(new JsAsset('/js/Class.js'));
-    $this->addAsset(new JsAsset('/js/ioc.js'));
+    $this->addAsset(new JsAsset('/js/core/jquery.js'));
+    $this->addAsset(new JsAsset('/js/core/Namespace.js'));
+    $this->addAsset(new JsAsset('/js/core/mustache.js'));
+    $this->addAsset(new JsAsset('/js/core/Underscore.js'));
+    $this->addAsset(new JsAsset('/js/core/Backbone.js'));
+    $this->addAsset(new JsAsset('/js/core/Class.js'));
+    $this->addAsset(new JsAsset('/js/core/ioc.js'));
 
     $this->addAsset(new JsAsset('/js/ui/jquery-ui-1.8.14.custom.js'));
-    $this->addAsset(new JsAsset('/js/jquery.form.js'));
-    $this->addAsset(new JsAsset('/js/jquery.jgrowl.js'));
-    $this->addAsset(new JsAsset('/js/jquery.ui.nestedSortable.js'));
-    $this->addAsset(new JsAsset('/js/jquery.cookie.js'));
-    $this->addAsset(new JsAsset('/js/jquery.dropup.js'));
-    $this->addAsset(new JsAsset('/js/jquery.serializeObject.js'));
+    $this->addAsset(new JsAsset('/js/core/jquery.form.js'));
+    $this->addAsset(new JsAsset('/js/core/jquery.ui.nestedSortable.js'));
+    $this->addAsset(new JsAsset('/js/core/jquery.cookie.js'));
+    $this->addAsset(new JsAsset('/js/core/jquery.dropup.js'));
+    $this->addAsset(new JsAsset('/js/core/jquery.serializeObject.js'));
 
     //contextDialog
-    $this->addAsset(new JsAsset('/js/jquery.contextDialog.js'));
-    $this->addAsset(new CssAsset('/css/jquery.contextDialog.css'));
+    $this->addAsset(new JsAsset('/js/core/jquery.contextDialog.js'));
+    $this->addAsset(new CssAsset('/css/core/jquery.contextDialog.css'));
 
-    $this->addAsset(new JsAsset('/js/util.js'));
+    //$this->addAsset(new JsAsset('/js/util.js'));
 
     $this->addFileAssets('/js/Web10/ContainerReg/*.js');
 
@@ -102,12 +101,11 @@ class EditingAssets extends AssetManager
     $this->addAsset(new JsAsset('/js/Web10/MainContainer.js'));
     $this->addAsset(new JsAsset('/js/Web10/Editing.js'));
 
-    $this->addAsset(new JsAsset('/js/config.js'));
-
     $this->addFileAssets('/css/Web10/*.css');
     $this->addFileAssets('/css/Web10/Web/*.css');
     $this->addAsset(new CssAsset('/css/Web10/Web/Blocks/Block.css'));
 
+    $this->addAsset(new JsAsset('/js/config.js'));
     $this->addAsset(new JsAsset('/js/main.js'));
   }
 
