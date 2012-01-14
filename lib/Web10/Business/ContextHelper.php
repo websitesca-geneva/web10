@@ -36,7 +36,7 @@ class ContextHelper
     //$page = $pc->getPage();
     //$this->blockRepo = $inj->get('Web10\Repository\Block\BlockRepo', array('blockType'=>"Web10\\Domain\\Blocks\\{$blockType}"));
     return $this->blockRepo->getBlock($page->getWebsite(),
-    $page->getLayout(), $page, $blockScope, $blockName, $blockContainer, $blockParams);
+      $page->getLayout(), $page, $blockScope, $blockName, $blockContainer, $blockParams);
   }
 
   public function getVisitor($sessionId)

@@ -1,41 +1,38 @@
 <?
 namespace Web10\Domain\Blocks;
 
+use Web10\Common\JsonEntity;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /** @Entity @Table(name="block_container") */
-class Container extends Block
-{
-  /** @Id @Column(type="integer") @GeneratedValue */
-  protected $id;
-  public function getId() { return $this->id; }
-  public function setId($id) { $this->id = $id; }
-
-  /** @OneToMany(targetEntity="Block", mappedBy="container", cascade={"all"}) */
+class Container extends Block implements JsonEntity
+{ 
+  /** @OneToMany(targetEntity="Web10\Domain\Blocks\Block", mappedBy="container", cascade={"all"}) */
   protected $blocks;
   public function getBlocks() { return $this->blocks; }
-  public function setBlocks($val) { $this->blocks = $val; }
-  public function addBlock($b) { $this->blocks[] = $b; }
-  public function getBlockCount() { return count($this->blocks); }
-
-  public function removeBlockById($id)
-  {
-    $count = 0;
-    foreach ($this->blocks as $b)
-    {
-      if ($b->getId() == $id)
-      {
-        unset($this->blocks[$count]);
-        break;
-      }
-      $count++;
-    }
-  }
+  public function addBlock($image) { $this->blocks[] = $image; }
+  public function clearBlocks() { $this->blocks = new ArrayCollection(); }
 
   public function __construct()
   {
     parent::__construct();
     $this->blocks = new ArrayCollection();
+  }
+
+  public function getJsonData()
+  {
+    $data = parent::getJsonDataBase();
+    $data['blocks'] = array();
+    foreach ($this->blocks as $block) 
+    {
+      $data['blocks'][] = $block->getJsonData();
+    }
+    return $data;
+  }
+
+  public function __toString()
+  {
+    return json_encode($this->getJsonData());
   }
 }
 ?>

@@ -10,8 +10,8 @@ use Web10\Domain\Layout;
  * @InheritanceType("JOINED")
  * @DiscriminatorColumn(name="discriminator", type="string")
  * @DiscriminatorMap({
- *  "text" = "Web10\Domain\Blocks\Text",
  *  "container" = "Web10\Domain\Blocks\Container",
+ *  "text" = "Web10\Domain\Blocks\Text",
  *  "menu" = "Web10\Domain\Blocks\Menu",
  *  "image" = "Web10\Domain\Blocks\Image",
  *  "imagegrid" = "Web10\Domain\Blocks\ImageGrid"

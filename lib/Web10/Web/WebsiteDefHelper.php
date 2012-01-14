@@ -24,7 +24,7 @@ class WebsiteDefHelper
 	protected $am;
 	protected $rootpathweb;
 
-	public function __construct(PageContext $pc, BlockContext $bc, VisitorContext $vc, EditingAssets $editingAssets, ViewingAssets $viewingAssets, WebsiteDefManager $defManager, $rootpathweb)
+	public function __construct(PageContext $pc, BlockContext $bc, VisitorContext $vc, EditingAssets $editingAssets, ViewingAssets $viewingAssets, WebsiteDefManager $defManager, $rootpathweb, ContextHelper $contextHelper)
 	{
 		$this->editingAssets = $editingAssets;
 		$this->viewingAssets = $viewingAssets;
@@ -33,6 +33,7 @@ class WebsiteDefHelper
 		$this->page = $pc->getPage();
 		$this->visitor = $vc->getVisitor();
 		$this->defManager = $defManager;
+		$this->contextHelper = $contextHelper;
 	}
 
 	public function render()
@@ -53,6 +54,7 @@ class WebsiteDefHelper
 	{
 		$this->renderTitle($qp);
 		$this->renderBlocks($qp);
+		$this->renderContainers($qp);
 
 		if ($this->visitor->getIsAuthenticated())
 		{
@@ -106,6 +108,14 @@ class WebsiteDefHelper
 			$this->renderBlock($qp, $block);
 		}
 	}
+	
+    protected function renderContainers($qp)
+	{
+		foreach ($qp->top()->find('container') as $container)
+		{
+			$this->renderContainer($qp, $container);
+		}
+	}
 
 	protected function addBlockAssets(Block $block)
 	{
@@ -118,14 +128,45 @@ class WebsiteDefHelper
 		$this->editingAssets->addAsset(new JsDataAsset(array('blockModel', $block->getId()), $block, $blockType));
 	}
 
+	protected function renderContainer($qp, $tag)
+	{
+		$blockType = $tag->attr('type');
+		$blockName = $tag->attr('name');
+		if ($tag->attr('scope'))
+		  $blockScope = strtoupper($tag->attr('scope'));
+		else
+		  $blockScope = 'PAGE';
+
+		$container = $this->contextHelper->getBlockByName($this->page, $blockType, $blockName, $blockScope, null, null);
+		$this->addBlockAssets($container);
+		
+		$c = CoreContainer::getStatic();
+		$bc = $c->get('Web10\Common\Contexts\BlockContext');
+		$bc->setupByBlock($container);
+		$controller = $c->get('Web10\Web\Blocks\Container\Controller');
+		
+		$html = $ctrl->view();
+		
+	    try
+		{
+		  $tag->replaceWith($html);
+		}
+		catch (QueryPathParseException $ex)
+		{
+    	  $partial = new QueryPath($html);
+    	  $partial->find('.block')->html('BAD HTML');
+    	  $tag->replaceWith($partial->top()->find('.block-wrapper')->html());
+		}
+	}
+	
 	protected function renderBlock($qp, $blockTag)
 	{
 		$blockType = $blockTag->attr('type');
 		$blockName = $blockTag->attr('name');
 		if ($blockTag->attr('scope'))
-		$blockScope = strtoupper($blockTag->attr('scope'));
+		  $blockScope = strtoupper($blockTag->attr('scope'));
 		else
-		$blockScope = 'PAGE';
+		  $blockScope = 'PAGE';
 
 		$params = array();
 		foreach ($blockTag->attr() as $name=>$value)
@@ -156,13 +197,13 @@ class WebsiteDefHelper
 		
 		try
 		{
-			$blockTag->replaceWith($html);
+		  $blockTag->replaceWith($html);
 		}
 		catch (QueryPathParseException $ex)
 		{
-			$partial = new QueryPath($html);
-			$partial->find('.block')->html('BAD HTML');
-			$blockTag->replaceWith($partial->top()->find('.block-wrapper')->html());
+    	  $partial = new QueryPath($html);
+    	  $partial->find('.block')->html('BAD HTML');
+    	  $blockTag->replaceWith($partial->top()->find('.block-wrapper')->html());
 		}
 	}
 
