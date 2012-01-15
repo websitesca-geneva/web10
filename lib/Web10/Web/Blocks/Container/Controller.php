@@ -15,6 +15,7 @@ class Controller
   {
     $this->bc = $bc;
     $this->vc = $vc;
+    $this->block = $bc->getBlock();
   }
   
   protected function render($wrap=true)
@@ -32,7 +33,7 @@ class Controller
       }
     }
 
-    $html .= "<div class='block $blockType' blockid='$blockId'>";
+    $html .= "<div class='block Container' blockid='$blockId'>";
     $html .= $this->getHTML($this->block);
     $html .= "</div>";
 
@@ -43,27 +44,15 @@ class Controller
 
     return $html;
   }
+  
+  protected function getHTML($block)
+  {
+    return "LIST OF BLOCKS HERE";
+  }
 
   public function view($isPartial=false)
   {
-    $view = new View($this->bc, $this->vc);
-    return $view->render(!$isPartial);
-  }
-
-  public function update($data, $id)
-  {
-    if (empty($data->imageId))
-    {
-      throw new InvalidArgumentException("You didn't select anything.");
-    }
-
-    $image = $this->im->getImage($data->imageId);
-
-    $b = $this->manager->getImageBlock($id);
-    $b->setImage($image);
-
-    $this->manager->saveImageBlock($b);
-    return $b;
+    return $this->render($isPartial);
   }
 }
 ?>

@@ -2,6 +2,7 @@
 namespace Web10\Web;
 
 use Web10\Business\WebsiteDefManager;
+use Web10\Business\ContextHelper;
 use Web10\Domain\Blocks\Block;
 use Web10\Common\CoreContainer;
 use Web10\Common\Contexts\PageContext;
@@ -137,15 +138,18 @@ class WebsiteDefHelper
 		else
 		  $blockScope = 'PAGE';
 
-		$container = $this->contextHelper->getBlockByName($this->page, $blockType, $blockName, $blockScope, null, null);
+		$c = CoreContainer::getStatic();
+		$c['blockType'] = 'Container'; //need this to build the correct blockrepo subclass
+		$h = $c->get('Web10\Business\ContextHelper');
+		  
+		$container = $h->getBlockByName($this->page, $blockType, $blockName, $blockScope, null, array());
 		$this->addBlockAssets($container);
 		
-		$c = CoreContainer::getStatic();
 		$bc = $c->get('Web10\Common\Contexts\BlockContext');
 		$bc->setupByBlock($container);
 		$controller = $c->get('Web10\Web\Blocks\Container\Controller');
 		
-		$html = $ctrl->view();
+		$html = $controller->view();
 		
 	    try
 		{
