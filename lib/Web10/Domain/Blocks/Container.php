@@ -12,6 +12,11 @@ class Container extends Block implements JsonEntity
   public function getBlocks() { return $this->blocks; }
   public function addBlock($image) { $this->blocks[] = $image; }
   public function clearBlocks() { $this->blocks = new ArrayCollection(); }
+  
+  /** @Column(type="text") */
+  protected $allowedTypes;
+  public function getAllowedTypes() { return $this->allowedTypes; }
+  public function setAllowedTypes($val) { $this->allowedTypes = $val; }
 
   public function __construct()
   {
@@ -19,10 +24,22 @@ class Container extends Block implements JsonEntity
     $this->blocks = new ArrayCollection();
   }
 
+  public function getAllowedTypesArray() 
+  {
+    $types = array();
+    $a = preg_split('/[,]+/', $this->allowedTypes);
+    foreach ($a as $type)
+    {
+      $types[] = trim($type);
+    }
+    return $types;
+  }
+  
   public function getJsonData()
   {
     $data = parent::getJsonDataBase();
     $data['blocks'] = array();
+    $data['allowedTypes'] = $this->getAllowedTypesArray();
     foreach ($this->blocks as $block) 
     {
       $data['blocks'][] = $block->getJsonData();

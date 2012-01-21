@@ -184,6 +184,7 @@ foreach ($hosts as $host)
   addHost($website, $host, $hostRepo);
 }
 
+/*
 $block = new Web10\Domain\Blocks\Text();
 $block->setText("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse libero eros, pulvinar ut fringilla ac, porttitor faucibus augue. Pellentesque vitae mi justo. Maecenas ornare felis a mi aliquet faucibus. Donec non dui metus, in fringilla neque. Aenean metus augue, vestibulum sed fringilla sed, ultrices quis libero. Morbi sed dolor leo, sagittis pulvinar lorem. Ut tincidunt, metus a porttitor mattis, elit risus varius nunc, at fermentum leo leo ac lectus.");
 $block->setName("Right Sidebar Text");
@@ -201,6 +202,7 @@ $cblock->setName("block1");
 $cblock->setContainerScope($website, $container);
 $container->addBlock($cblock);
 $blockRepo->saveAndFlush($container);
+*/
 
 //IMAGES PAGE
 $p = new Web10\Domain\Page();

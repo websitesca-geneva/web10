@@ -1,0 +1,8 @@
+.SimpleDialog {
+  display: none;
+}
+
+.SimpleDialog .title {
+  font-family: Georgia;
+  font-size: 200%;
+}

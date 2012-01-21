@@ -5,10 +5,27 @@ Web10.ContainerReg.Block = function(ioc) {
 };
 
 Web10.ContainerReg.Block.prototype.register = function() {
+  this.setupContainerDialogView();
 	this.setupImageGridDialogView();
 	this.setupImageDialogView();
 	this.setupMenuDialogView();
 	this.setupTextDialogView();
+};
+
+Web10.ContainerReg.Block.prototype.setupContainerDialogView = function() {
+  /*
+  this.ioc.set('BlockChooserTabView', function(ioc) {
+    return new Web10.Block.Container.BlockChooserTabView({
+      blockTypes: ioc.get('blockTypes')
+    });
+  });
+  */
+  
+  this.ioc.set('ContainerDialogViewFactory', function(ioc) {
+    return new RuntimeFactory(Web10.Block.Container.ContainerDialogView, {
+      
+    });
+  });
 };
 
 Web10.ContainerReg.Block.prototype.setupImageGridDialogView = function() {
@@ -86,7 +103,7 @@ Web10.ContainerReg.Block.prototype.setupImageDialogView = function() {
 			modelHelper: ioc.get('ModelHelper')
 		});
 	});
-}
+};
 
 /*
 //maybe this way

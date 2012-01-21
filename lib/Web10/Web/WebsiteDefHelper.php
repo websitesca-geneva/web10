@@ -142,7 +142,9 @@ class WebsiteDefHelper
 		$c['blockType'] = 'Container'; //need this to build the correct blockrepo subclass
 		$h = $c->get('Web10\Business\ContextHelper');
 		  
-		$container = $h->getBlockByName($this->page, $blockType, $blockName, $blockScope, null, array());
+		$params = $this->getExtraParams($tag);
+		
+		$container = $h->getBlockByName($this->page, $blockType, $blockName, $blockScope, null, $params);
 		$this->addBlockAssets($container);
 		
 		$bc = $c->get('Web10\Common\Contexts\BlockContext');
@@ -163,6 +165,19 @@ class WebsiteDefHelper
 		}
 	}
 	
+	protected function getExtraParams($blockTag)
+	{
+		$params = array();
+		foreach ($blockTag->attr() as $name=>$value)
+		{
+			if ($name == 'type') continue;
+			if ($name == 'name') continue;
+			if ($name == 'scope') continue;
+			$params[$name] = $value;
+		}
+		return $params;
+	}
+	
 	protected function renderBlock($qp, $blockTag)
 	{
 		$blockType = $blockTag->attr('type');
@@ -172,15 +187,7 @@ class WebsiteDefHelper
 		else
 		  $blockScope = 'PAGE';
 
-		$params = array();
-		foreach ($blockTag->attr() as $name=>$value)
-		{
-			if ($name == 'type') continue;
-			if ($name == 'name') continue;
-			if ($name == 'scope') continue;
-			$params[$name] = $value;
-		}
-		//$params = array_map(function($a) { return array($a->name, $a->value); }, $block->attributes);
+        $params = $this->getExtraParams($blockTag);
 
 		//At this point, we are in the context of a block, so configure the blockcontext
 		$c = CoreContainer::getStatic();

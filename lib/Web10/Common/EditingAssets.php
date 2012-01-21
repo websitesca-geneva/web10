@@ -47,6 +47,9 @@ class EditingAssets extends AssetManager
     //contextDialog
     $this->addAsset(new JsAsset('/js/core/jquery.contextDialog.js'));
     $this->addAsset(new CssAsset('/css/core/jquery.contextDialog.css'));
+    
+    $this->addFileAssets('/asset/fancybox/*.js');
+    $this->addFileAssets('/asset/fancybox/*.css');
 
     //$this->addAsset(new JsAsset('/js/util.js'));
 

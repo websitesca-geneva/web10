@@ -1,6 +1,7 @@
 <?
 namespace Web10\Web\Blocks\Container;
 
+use Web10\Domain\Blocks\Container;
 use Web10\Common\Contexts\BlockContext;
 use Web10\Common\Contexts\VisitorContext;
 use \InvalidArgumentException;
@@ -10,12 +11,14 @@ class Controller
   protected $bc;
   protected $vc;
   protected $manager;
+  protected $visitor;
 
   public function __construct(BlockContext $bc, VisitorContext $vc)
   {
     $this->bc = $bc;
     $this->vc = $vc;
     $this->block = $bc->getBlock();
+    $this->visitor = $vc->getVisitor();
   }
   
   protected function render($wrap=true)
@@ -45,14 +48,19 @@ class Controller
     return $html;
   }
   
-  protected function getHTML($block)
+  protected function getHTML(Container $container)
   {
-    return "LIST OF BLOCKS HERE";
+    $blocks = $container->getBlocks();
+    if (count($blocks) == 0) return "EMPTY";
+    else 
+    {
+      return "LISTING BLOCKS";
+    }
   }
 
   public function view($isPartial=false)
   {
-    return $this->render($isPartial);
+    return $this->render(!$isPartial);
   }
 }
 ?>
