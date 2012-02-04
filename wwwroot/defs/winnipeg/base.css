@@ -4,7 +4,8 @@ body,html,form {
 }
 
 body {
-  background-color: #666633;
+/*  background-color: #666633;*/
+background-color: red;
   font: 16pt arial;
 }
 
