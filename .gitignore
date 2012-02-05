@@ -1,8 +1,0 @@
-.DS_Store
-wwwroot/data/*
-data/*
-wwwroot/sadmin/templates_c/*
-.buildpath
-.project
-.idea/*
-.settings/*
