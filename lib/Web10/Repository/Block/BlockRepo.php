@@ -89,9 +89,9 @@ class BlockRepo extends DomainEntityRepo
       $first = substr($name, 0, 1);
       $method = 'set' . strtoupper($first) . substr($name, 1);
       if (method_exists($b, $method))
-      $b->$method($value);
+      	$b->$method($value);
       else
-      throw new InvalidArgumentException("The method $method does not exist for property $name with blockType {$this->blockType}");
+      	throw new InvalidArgumentException("The method $method does not exist for property $name with blockType {$this->blockType}");
     }
 
     $this->_em->persist($b);
