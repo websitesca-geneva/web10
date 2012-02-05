@@ -39,7 +39,7 @@ class CoreClassLoader
     $this->register('QueryPath', function($cls) { return "QueryPath/$cls"; });
     
     $this->register('Web10\SAdmin', function($cls) {
-      $after = substr($cls,  12);
+      $after = substr($cls,  13);
       return "sadmin/$after"; 
     });
     
