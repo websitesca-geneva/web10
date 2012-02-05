@@ -273,19 +273,21 @@ class WebsiteDefHelper
 		$qp->top()->find('body')->prepend($this->getToolbar());
 	}
 
-	protected function getToolbar()
-	{
-		$html  = "<table width='100%' id='toolbar'><tr>";
-		$html .= "<td align='left'>Menu: ";
-		$html .= "<a href='javascript:void(0);' id='pageManagerButton'>Pages</a>";
-		$html .= "<a href='javascript:void(0);' id='fileManagerButton'>Files</a>";
-		$html .= "<a href='/login.php?action=logout'>Logout</a>";
-		$html .= "</td>";
-		$html .= "<td align='right'>";
-		$html .= "<span id='editingMode'>Editing: <a href='javascript:void(0);' name='on'>On</a> <a href='javascript:void(0);' name='off'>Off</a></span>";
-		$html .= " /  Websites.ca";
-		$html .= "</td></tr></table>\n\n";
-		return $html;
-	}
+        protected function getToolbar()
+        {
+                $html  = "<table width='100%' id='toolbar'><tr>";
+                $html .= "<td id='menubar' align='left'>";
+                $html .= "<a href='/login.php?action=logout'><span class='icon'>X</span>Logout</a>";
+                $html .= "<a href='javascript:void(0);' id='fileManagerButton'><span class='icon'>Z</span>Files</a>";
+                $html .= "<a href='javascript:void(0);' id='pageManagerButton'><span class='icon'>a</span>Pages</a>";
+                $html .= "</td>";
+                $html .= "<td></td>";
+                $html .= "<td align='right' id='rightTools'>";
+                $html .= "<span id='editText'>Editing:</span>";
+                $html .= "<div id='editingMode'><a href='javascript:void(0);' id='on' name='on'><span>On</span></a> <a href='javascript:void(0);' id='off' name='off'><span>Off</span></a></div>";
+                $html .= "<img id='logo' src='/img/logo.png' alt='Websutes.ca' />";
+                $html .= "</td></tr></table>\n\n";
+                return $html;
+        }
 }
 ?>
