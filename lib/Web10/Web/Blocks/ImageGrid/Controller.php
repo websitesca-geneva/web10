@@ -32,7 +32,7 @@ class Controller
   {
     //add required assets: a css file for the imagegrid and a js file to do lightbox
     $this->assets->addAsset(new CssAsset('/css/Web10/Web/Blocks/ImageGrid.css'));
-    $this->assets->addAsset(new JsAsset('/js/jquery.js'));
+    $this->assets->addAsset(new JsAsset('/js/core/jquery.js'));
     $this->assets->addFileAssets('/asset/fancybox/jquery.fancybox.*');
     $this->assets->addAsset(new JsAsset('/js/Web10/Block/ImageGrid/ImageGrid.js'));
   }
