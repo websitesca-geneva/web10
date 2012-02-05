@@ -2,7 +2,7 @@
 <head>
 <title>{{ title }}</title>
 <link rel='stylesheet' href='/sadmin/main.css' />
-<script type='text/javascript' src='/js/jquery.js'></script>
+<script type='text/javascript' src='/js/core/jquery.js'></script>
 <script type='text/javascript' src='/sadmin/js/main.js'></script>
 </head>
 <body>
